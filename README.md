@@ -8,8 +8,21 @@
 
 参考地址：
 https://github.com/tindy2013/subconverter.git
+![img.png](pic/img.png)
+![img.png](pic/img2.png)
 
 
+成功之后会生成文件名； 7ea8787fb7f8476aa355feb088f2de45.yaml
+
+![img_1.png](pic/img_3.png)
+
+
+根据文件名去项目路径下找： 
+
+![img.png](pic/img4.png)
+
+
+这个文件即时Clash配置文件，可以直接使用
 ## 为啥不用已有的开源项目后台
 最重要的一点，看不懂其他语言的代码。想搞一些最新的协议，但是没用嗨呀！
 
