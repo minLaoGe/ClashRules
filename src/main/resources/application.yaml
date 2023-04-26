@@ -1,0 +1,15 @@
+server:
+  port: 8899
+  servlet:
+    context-path: /other
+spring:
+  application:
+    name: order
+  freemarker:
+    suffix:
+
+
+debug: on
+
+freemarker:
+  sava-path: ./
