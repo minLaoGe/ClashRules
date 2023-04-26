@@ -6,7 +6,7 @@ spring:
   application:
     name: order
   freemarker:
-    suffix:
+    template-loader-path: /clash/ftl/
 
 
 debug: on

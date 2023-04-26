@@ -68,7 +68,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>cn.minfengyu.DistributeSystem</mainClass>
+                    <mainClass>cn.minfengyu.ClashRules</mainClass>
                     <includeSystemScope>true</includeSystemScope>
                 </configuration>
                 <version>3.0.4</version>
