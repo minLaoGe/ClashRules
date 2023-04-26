@@ -14,6 +14,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -31,6 +32,8 @@ public class ClashHandle implements Handle {
 
     @Autowired
     FreeMarkGenerater freeMarkGenerater;
+    @Value("${freemarker.down-url}")
+    private String downUrl;
 
 
 
@@ -44,7 +47,7 @@ public class ClashHandle implements Handle {
         int order=0;
         for (String link : links) {
             try {
-               resultList.add( parseVlessConfig(link, order++));
+               resultList.add( parseVlessConfig(link.trim(), order++));
             } catch (Exception e) {
                 log.error("连接解析失败: {}",link);
             }
@@ -62,7 +65,7 @@ public class ClashHandle implements Handle {
         }
         templateMap.put("content",fileReader.readString());
         String s = freeMarkGenerater.generateText(templateMap);
-       return BaseResult.getResult(s);
+       return BaseResult.getResult(downUrl+s);
     }
     private String getQueryValue(String query, String key) {
         for (String keyValue : query.split("&")) {

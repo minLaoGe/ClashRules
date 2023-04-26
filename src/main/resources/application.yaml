@@ -12,4 +12,5 @@ spring:
 debug: on
 
 freemarker:
-  sava-path: ./
+  sava-path: /usr/config/clash/
+  down-url: http://domain/clash/
