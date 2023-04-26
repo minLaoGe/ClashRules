@@ -1,0 +1,3 @@
+freemarker:
+  sava-path: ./
+  down-url: http://domain/clash/

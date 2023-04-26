@@ -1,6 +1,6 @@
 package cn.minfengyu.service.convert.impl;
 
-import cn.hutool.core.io.file.FileReader;
+import cn.hutool.core.io.FileUtil;
 import cn.minfengyu.dto.ParseDTO;
 import cn.minfengyu.eneity.parse.BaseProxye;
 import cn.minfengyu.eneity.parse.VlessProxy;
@@ -21,8 +21,9 @@ import org.springframework.util.StringUtils;
 
 import cn.minfengyu.result.BaseResult;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 @Component
@@ -56,14 +57,16 @@ public class ClashHandle implements Handle {
 
         templateMap.put("proxies",resultList);
         ClassPathResource classPathResource = new ClassPathResource("/clash/rules.text");
-        FileReader fileReader = null;
-        try {
-            fileReader = FileReader.create(classPathResource.getFile());
+
+        try (   BufferedInputStream bufferedInputStream = new BufferedInputStream(classPathResource.getInputStream());){
+            byte[] bytes = bufferedInputStream.readAllBytes();
+            String content = new String(bytes, StandardCharsets.UTF_8);
+            templateMap.put("content", content);
         } catch (IOException e) {
             log.error("错误了",e);
             return BaseResult.getFail();
         }
-        templateMap.put("content",fileReader.readString());
+
         String s = freeMarkGenerater.generateText(templateMap);
        return BaseResult.getResult(downUrl+s);
     }

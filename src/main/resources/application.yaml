@@ -6,11 +6,15 @@ spring:
   application:
     name: order
   freemarker:
-    template-loader-path: /clash/ftl/
+    cache: false
+    # 模板路径
+    template-loader-path: classpath:/clash/ftl/
+    suffix: .ftl
+    content-type: text/html
+    charset: UTF-8
+  profiles:
+    active: local
 
 
 debug: on
 
-freemarker:
-  sava-path: /usr/config/clash/
-  down-url: http://domain/clash/

@@ -14,6 +14,6 @@ public class ViewController {
         HashMap<String, Object> stringObjectHashMap = new HashMap<>();
         stringObjectHashMap.put("title","你好");
         model.addAttribute("title","你好");
-        return "index.ftl";
+        return "index";
     }
 }
