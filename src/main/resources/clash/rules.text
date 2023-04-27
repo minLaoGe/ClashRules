@@ -2204,7 +2204,7 @@
 - DOMAIN-KEYWORD,dropbox,🚀 节点选择
 - DOMAIN-KEYWORD,facebook,🚀 节点选择
 - DOMAIN-KEYWORD,fbcdn,🚀 节点选择
-- DOMAIN-KEYWORD,github,🚀 节点选择
+- DOMAIN-KEYWORD,github,🚀 节点选择,no-resolve
 - DOMAIN-KEYWORD,gmail,🚀 节点选择
 - DOMAIN-KEYWORD,google,🚀 节点选择
 - DOMAIN-KEYWORD,instagram,🚀 节点选择
@@ -2389,11 +2389,11 @@
 - IP-CIDR,179.60.192.0/22,🚀 节点选择,no-resolve
 - IP-CIDR,185.60.216.0/22,🚀 节点选择,no-resolve
 - IP-CIDR,204.15.20.0/22,🚀 节点选择,no-resolve
-- DOMAIN-SUFFIX,github.com,🚀 节点选择
-- DOMAIN-SUFFIX,github.io,🚀 节点选择
-- DOMAIN-SUFFIX,githubapp.com,🚀 节点选择
-- DOMAIN-SUFFIX,githubassets.com,🚀 节点选择
-- DOMAIN-SUFFIX,githubusercontent.com,🚀 节点选择
+- DOMAIN-SUFFIX,github.com,🚀 节点选择,no-resolve
+- DOMAIN-SUFFIX,github.io,🚀 节点选择,no-resolve
+- DOMAIN-SUFFIX,githubapp.com,🚀 节点选择,no-resolve
+- DOMAIN-SUFFIX,githubassets.com,🚀 节点选择,no-resolve
+- DOMAIN-SUFFIX,githubusercontent.com,🚀 节点选择,no-resolve
 - DOMAIN-SUFFIX,1e100.net,🚀 节点选择
 - DOMAIN-SUFFIX,2mdn.net,🚀 节点选择
 - DOMAIN-SUFFIX,app-measurement.net,🚀 节点选择
