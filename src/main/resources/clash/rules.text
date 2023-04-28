@@ -2461,7 +2461,7 @@
 - IP-CIDR,119.235.236.0/23,🚀 节点选择,no-resolve
 - IP-CIDR,147.92.128.0/17,🚀 节点选择,no-resolve
 - IP-CIDR,203.104.128.0/19,🚀 节点选择,no-resolve
-- DOMAIN-SUFFIX,openai.com,🚀 节点选择
+- DOMAIN-SUFFIX,openai.com,🚀 节点选择,no-resolve
 - DOMAIN-SUFFIX,challenges.cloudflare.com,🚀 节点选择
 - DOMAIN-SUFFIX,ai.com,🚀 节点选择
 - DOMAIN-KEYWORD,1drv,🚀 节点选择
