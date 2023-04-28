@@ -35,7 +35,7 @@
 - DOMAIN-SUFFIX,wifi.cmcc,🎯 全球直连
 - DOMAIN-SUFFIX,ol.epicgames.com,🎯 全球直连
 - DOMAIN-SUFFIX,dizhensubao.getui.com,🎯 全球直连
-- DOMAIN,dl.google.com,🎯 全球直连
+- DOMAIN,dl.google.com,🎯 全球直连,no-resolve
 - DOMAIN-SUFFIX,googletraveladservices.com,🎯 全球直连
 - DOMAIN-SUFFIX,tracking-protection.cdn.mozilla.net,🎯 全球直连
 - DOMAIN,origin-a.akamaihd.net,🎯 全球直连
@@ -2206,7 +2206,7 @@
 - DOMAIN-KEYWORD,fbcdn,🚀 节点选择
 - DOMAIN-KEYWORD,github,🚀 节点选择,no-resolve
 - DOMAIN-KEYWORD,gmail,🚀 节点选择
-- DOMAIN-KEYWORD,google,🚀 节点选择
+- DOMAIN-KEYWORD,google,🚀 节点选择,no-resolve
 - DOMAIN-KEYWORD,instagram,🚀 节点选择
 - DOMAIN-KEYWORD,porn,🚀 节点选择
 - DOMAIN-KEYWORD,sci-hub,🚀 节点选择
