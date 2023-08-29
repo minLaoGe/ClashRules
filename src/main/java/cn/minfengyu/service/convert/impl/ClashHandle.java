@@ -3,6 +3,7 @@ package cn.minfengyu.service.convert.impl;
 import cn.hutool.core.io.FileUtil;
 import cn.minfengyu.dto.ParseDTO;
 import cn.minfengyu.eneity.parse.BaseProxye;
+import cn.minfengyu.eneity.parse.SSProxy;
 import cn.minfengyu.eneity.parse.VlessProxy;
 import cn.minfengyu.eneity.parse.VmessProxy;
 import cn.minfengyu.result.BaseResult;
@@ -22,6 +23,7 @@ import org.springframework.util.StringUtils;
 import cn.minfengyu.result.BaseResult;
 
 import java.io.*;
+import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -74,16 +76,34 @@ public class ClashHandle implements Handle {
         for (String keyValue : query.split("&")) {
             String[] kv = keyValue.split("=");
             if (kv.length == 2 && kv[0].equals(key)) {
-                return kv[1];
+                return processSpecularStr(key,kv[1]);
             }
         }
         return "";
+    }
+
+    private String processSpecularStr(String key,String s) {
+        if ("sni".equals(key)){
+            return extractDomain(s);
+        }
+        return s;
+    }
+
+
+    public static String extractDomain(String urlStr) {
+        //获取注释的位置
+        int i = urlStr.lastIndexOf("#");
+        String substring = urlStr.substring(0, i);
+        return substring;
     }
     private BaseProxye parseVlessConfig(String link,int order) throws Exception {
         BaseProxye baseProxye = null;
         String decodedLink =null;
         if (link.startsWith("vless:")){
             link= URLDecoder.decode(link, "UTF-8");
+        } else if(link.startsWith("ss:")){
+            String base64Decoded = new String(Base64.getDecoder().decode(link.substring(link.indexOf("://") + 3).split("#")[0]));
+            decodedLink = base64Decoded;
         }else {
             decodedLink=new String(Base64.getDecoder().decode(link.substring(link.indexOf("://") + 3)));
         }
@@ -130,6 +150,30 @@ public class ClashHandle implements Handle {
                 vmessProxy.setWsOpts(wsOpts);
             }
             baseProxye=vmessProxy;
+        }else if (link.startsWith("ss")){
+
+            SSProxy ssProxy = new SSProxy();
+            //加密方式  比如 decodeLink= aes-256-gcm:2MIjfoxBjd@107.172.60.35:80
+            String[] split = decodedLink.split(":");
+
+
+            String encryMethod= split[0];
+
+            //密码和ip
+            String[] split1 = split[1].split("@");
+            String password= split1[0];
+            String domianArr= split1[1];
+            String[] split2 = domianArr.split(":");
+            String ip= split2[0];
+            String port= split[2];
+            VlessProxy vlessProxy = new VlessProxy();
+            ssProxy.setCipher(encryMethod);
+            ssProxy.setPort(port);
+            ssProxy.setServer(ip);
+            ssProxy.setType("ss");
+            ssProxy.setPassword(password);
+            ssProxy.setName(String.valueOf(order));
+            baseProxye=ssProxy;
         }
         return baseProxye;
     }

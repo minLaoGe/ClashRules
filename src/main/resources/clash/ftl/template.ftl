@@ -6,7 +6,9 @@ log-level: info
 external-controller: 127.0.0.1:9090
 proxies:
 <#list proxies as proxy>
-  <#if proxy.type == "vless">
+  <#if proxy.type == "ss">
+    - {name: "${proxy.name}", type: ${proxy.type}, server: ${proxy.server}, port: ${proxy.port}, password: ${proxy.password}, cipher: ${proxy.cipher}}
+  <#elseif proxy.type == "vless">
     - {name: "${proxy.name}", type: ${proxy.type}, server: ${proxy.server}, port: ${proxy.port}, uuid: ${proxy.uuid}, tls: ${proxy.tls?c}, servername: ${proxy.servername}, network: ${proxy.network}<#if proxy.network == 'ws'>, ws-opts: {path: ${proxy.wsOpts.path}} </#if>}
   <#elseif proxy.type == "vmess">
     - {name: "${proxy.name}", server: ${proxy.server}, port: ${proxy.port}, type: ${proxy.type}, uuid: ${proxy.uuid}, alterId: ${proxy.alterId}, cipher: ${proxy.cipher}, tls: ${proxy.tls?c}, network: ${proxy.network}<#if proxy.network == 'ws'>, ws-opts: {path: ${proxy.wsOpts.path}<#if proxy.wsOpts.wsHeaders.Host?has_content>, headers: {Host: ${proxy.wsOpts.wsHeaders.Host}}</#if>}  </#if>}
